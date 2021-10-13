@@ -25,6 +25,7 @@ import com.nomeacao.model.GrandeComissao;
 import com.nomeacao.model.Membro;
 import com.nomeacao.repository.GrandeComissaoRepository;
 import com.nomeacao.repository.MembroRepository;
+import com.nomeacao.service.GrandeComissaoService;
 
 @RestController
 @RequestMapping("/membros")
@@ -35,6 +36,9 @@ public class MembroResource {
 
 	@Autowired
 	private GrandeComissaoRepository grandeComissaoRepository;
+	
+	@Autowired
+	private GrandeComissaoService grandeComissaoService;
 
 	@Autowired
 	private ApplicationEventPublisher publisher;
@@ -60,15 +64,10 @@ public class MembroResource {
 		return this.membroRepository.findById(codigo).orElse(null);
 	}
 
-	@PutMapping("/grande_comissao/{codigo}")
-	public GrandeComissao salvarGrandeComissao(@PathVariable Long codigo, @Valid @RequestBody Membro membro) {
-		Membro membroSalva = this.membroRepository.findById(codigo)
-				.orElseThrow(() -> new EmptyResultDataAccessException(1));
-		 BeanUtils.copyProperties(membro, grandeComissaoSalva, "codigo");
-		grandeComissaoSalva.setNome(membroSalva.getNome());
-		grandeComissaoSalva.setVoto(0);
-	
-		return this.grandeComissaoRepository.save(grandeComissaoSalva);
+	@PostMapping("/grande_comissao/{codigo}")
+	public ResponseEntity<GrandeComissao> salvarGrandeComissao(@PathVariable Long codigo, @Valid @RequestBody Membro membro) {
+		GrandeComissao grandeComissaoSalva = grandeComissaoService.salvar(codigo, membro); 
+		return ResponseEntity.ok(grandeComissaoSalva);
 	}
 
 }

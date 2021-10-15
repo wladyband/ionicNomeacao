@@ -33,8 +33,15 @@ public class MembroResource {
 
 	GrandeComissao grandeComissaoSalva = new GrandeComissao();
 
+	Membro membro = new Membro();
+
 	@GetMapping
 	public List<Membro> listar() {
+
+//		Iterable<Membro> iterable = membroRepository.findAll();
+//		for(Membro s: iterable){
+//			System.out.println(s.getNome());
+//		}
 		return membroRepository.findAll();
 	}
 
@@ -51,7 +58,5 @@ public class MembroResource {
 	public Membro buscarPeloCodigo(@PathVariable Long codigo) {
 		return this.membroRepository.findById(codigo).orElse(null);
 	}
-
-
 
 }

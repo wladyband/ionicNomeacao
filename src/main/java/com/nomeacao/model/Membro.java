@@ -17,15 +17,19 @@ public class Membro {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-	@NotNull	
+	@NotNull
 	private String nome;
-	
+
 	@NotNull
 	private String email;
 
 	private String telefone;
-		
-	private Integer entrada;
+
+	private Integer permissao_grande_comissao;
+
+	private Integer permissao_comissao;
+
+	private Integer permissao_voto;
 
 	public Long getCodigo() {
 		return codigo;
@@ -59,12 +63,28 @@ public class Membro {
 		this.telefone = telefone;
 	}
 
-	public Integer getEntrada() {
-		return entrada;
+	public Integer getPermissao_grande_comissao() {
+		return permissao_grande_comissao;
 	}
 
-	public void setEntrada(Integer entrada) {
-		this.entrada = entrada;
+	public void setPermissao_grande_comissao(Integer permissao_grande_comissao) {
+		this.permissao_grande_comissao = permissao_grande_comissao;
+	}
+
+	public Integer getPermissao_comissao() {
+		return permissao_comissao;
+	}
+
+	public void setPermissao_comissao(Integer permissao_comissao) {
+		this.permissao_comissao = permissao_comissao;
+	}
+
+	public Integer getPermissao_voto() {
+		return permissao_voto;
+	}
+
+	public void setPermissao_voto(Integer permissao_voto) {
+		this.permissao_voto = permissao_voto;
 	}
 
 	@Override

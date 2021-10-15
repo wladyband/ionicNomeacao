@@ -3,7 +3,9 @@ CREATE TABLE membro (
     nome VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     telefone VARCHAR(50) NOT NULL,
-    entrada VARCHAR(50) NULL,
+    permissao_grande_comissao integer NULL,
+	permissao_comissao integer NULL,
+	permissao_voto integer NULL,
 	PRIMARY KEY(codigo)
 );
 

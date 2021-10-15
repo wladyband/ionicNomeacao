@@ -29,7 +29,7 @@ public class GrandeComissaoService {
 		
 		BeanUtils.copyProperties(membro, grandeComissao);
 		grandeComissao.setNome(membroSalva.getNome());
-		grandeComissao.setVoto(0);
+		grandeComissao.setVoto(1);
 		return this.grandeComissaoRepository.save(grandeComissao);
 	}
 }

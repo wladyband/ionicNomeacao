@@ -1,17 +1,13 @@
 package com.nomeacao.resource;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nomeacao.model.GrandeComissao;
-import com.nomeacao.model.Membro;
 import com.nomeacao.service.GrandeComissaoService;
 
 @RestController
@@ -25,9 +21,17 @@ public class GrandeComissaoResource {
 	GrandeComissao grandeComissaoSalva = new GrandeComissao();
 
 	@PostMapping("/{codigo}")
-	public ResponseEntity<GrandeComissao> salvarGrandeComissao(@PathVariable Long codigo, @Valid @RequestBody Membro membro) {
-		GrandeComissao grandeComissaoSalva = grandeComissaoService.salvar(codigo, membro); 
+	public ResponseEntity<GrandeComissao> salvarGrandeComissao(@PathVariable Long codigo) {
+		GrandeComissao grandeComissaoSalva = grandeComissaoService.salvar(codigo); 
 		return ResponseEntity.ok(grandeComissaoSalva);
 	}
 
 }
+
+
+//Optional<Membro> membro = this.membroRepository.findById(codigo);
+//GrandeComissao grandeComissao = new GrandeComissao();
+//
+//grandeComissao.setNome(membro.get().getNome());
+//grandeComissao.setVoto(1);
+//grandeComissaoRepository.save(grandeComissao);

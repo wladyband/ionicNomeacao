@@ -1,5 +1,7 @@
 package com.nomeacao.service;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -20,14 +22,14 @@ public class GrandeComissaoService {
 	private GrandeComissaoRepository grandeComissaoRepository;
 	
 	Membro membro = new Membro();
-	GrandeComissao grandeComissao = new GrandeComissao();
+	
 	
 
-	public GrandeComissao salvar(Long codigo, Membro membro) {
+	public GrandeComissao salvar(Long codigo) {
+		GrandeComissao grandeComissao = new GrandeComissao();
 		Membro membroSalva = this.membroRepository.findById(codigo)
 				.orElseThrow(() -> new EmptyResultDataAccessException(1));
 		
-		BeanUtils.copyProperties(membro, grandeComissao);
 		grandeComissao.setNome(membroSalva.getNome());
 		grandeComissao.setVoto(1);
 		return this.grandeComissaoRepository.save(grandeComissao);

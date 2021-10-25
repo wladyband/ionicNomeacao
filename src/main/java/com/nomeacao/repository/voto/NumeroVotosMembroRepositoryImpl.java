@@ -4,12 +4,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.nomeacao.model.NumeroVotosMembro;
 
-@Component
+@Repository
 public class NumeroVotosMembroRepositoryImpl implements NumeroVotosMembroRepositoryQuery{
 	
 	@PersistenceContext
@@ -17,7 +18,9 @@ public class NumeroVotosMembroRepositoryImpl implements NumeroVotosMembroReposit
 
 	@Override
 	public List<NumeroVotosMembro> ListarNumeros() {
-		return manager.createQuery("select from NumeroVotosMembro", NumeroVotosMembro.class).getResultList();
+		TypedQuery<NumeroVotosMembro>  consulta = manager.createQuery("FROM NumeroVotosMembro nvm ORDER BY nvm.valor_voto desc", NumeroVotosMembro.class);
+		System.out.println(consulta);
+		return consulta.getResultList();
 	}
 
 }	

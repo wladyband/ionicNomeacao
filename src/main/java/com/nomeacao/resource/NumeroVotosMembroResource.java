@@ -17,11 +17,9 @@ public class NumeroVotosMembroResource {
 	@Autowired
 	private NumeroVotosMembroRepository numeroVotosMembroRepository;
 	
-	
-	
 	@GetMapping
 	public List<NumeroVotosMembro> listar() {
-		return numeroVotosMembroRepository.findAll();
+		return numeroVotosMembroRepository.ListarNumeros();
 	}
 	
 

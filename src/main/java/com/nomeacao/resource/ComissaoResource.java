@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nomeacao.model.Comissao;
+import com.nomeacao.model.ComissaoNomeacao;
 import com.nomeacao.model.GrandeComissao;
 import com.nomeacao.service.ComissaoService;
 
@@ -25,8 +25,8 @@ public class ComissaoResource {
 	GrandeComissao grandeComissaoSalva = new GrandeComissao();
 
 	@PostMapping("/{codigo}")
-	public ResponseEntity<Comissao> salvarComissao(@PathVariable Long codigo, @Valid @RequestBody GrandeComissao grandeComissao) {
-		Comissao comissaoSalva = comissaoService.salvar(codigo, grandeComissao); 
+	public ResponseEntity<ComissaoNomeacao> salvarComissao(@PathVariable Long codigo, @Valid @RequestBody GrandeComissao grandeComissao) {
+		ComissaoNomeacao comissaoSalva = comissaoService.salvar(codigo, grandeComissao); 
 		return ResponseEntity.ok(comissaoSalva);
 	}
 

@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "membro")
 public class Membro {
@@ -23,11 +25,14 @@ public class Membro {
 	@NotNull
 	private String email;
 
+	@JsonIgnore
+	private String senha;
+
 	private String telefone;
 
 	private Integer permissao_grande_comissao;
 
-	private Integer permissao_comissao;
+	private Integer permissao_comissao_nomeacao;
 
 	private Integer permissao_voto;
 
@@ -55,6 +60,14 @@ public class Membro {
 		this.email = email;
 	}
 
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 	public String getTelefone() {
 		return telefone;
 	}
@@ -71,12 +84,12 @@ public class Membro {
 		this.permissao_grande_comissao = permissao_grande_comissao;
 	}
 
-	public Integer getPermissao_comissao() {
-		return permissao_comissao;
+	public Integer getPermissao_comissao_nomeacao() {
+		return permissao_comissao_nomeacao;
 	}
 
-	public void setPermissao_comissao(Integer permissao_comissao) {
-		this.permissao_comissao = permissao_comissao;
+	public void setPermissao_comissao_nomeacao(Integer permissao_comissao_nomeacao) {
+		this.permissao_comissao_nomeacao = permissao_comissao_nomeacao;
 	}
 
 	public Integer getPermissao_voto() {

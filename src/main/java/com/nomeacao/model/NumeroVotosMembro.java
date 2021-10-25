@@ -9,16 +9,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "comissao")
-public class Comissao {
-
+@Table(name = "numero_votos_membro")
+public class NumeroVotosMembro {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
 	private String nome;
 
-	private Integer voto;
+	private Integer valor_voto;
 
 	public Long getCodigo() {
 		return codigo;
@@ -36,12 +36,12 @@ public class Comissao {
 		this.nome = nome;
 	}
 
-	public Integer getVoto() {
-		return voto;
+	public Integer getValor_voto() {
+		return valor_voto;
 	}
 
-	public void setVoto(Integer voto) {
-		this.voto = voto;
+	public void setValor_voto(Integer valor_voto) {
+		this.valor_voto = valor_voto;
 	}
 
 	@Override
@@ -57,8 +57,8 @@ public class Comissao {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Comissao other = (Comissao) obj;
+		NumeroVotosMembro other = (NumeroVotosMembro) obj;
 		return Objects.equals(codigo, other.codigo);
 	}
-
+	
 }

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.nomeacao.model.Comissao;
+import com.nomeacao.model.ComissaoNomeacao;
 import com.nomeacao.model.GrandeComissao;
 import com.nomeacao.repository.ComissaoRepository;
 import com.nomeacao.repository.GrandeComissaoRepository;
@@ -19,9 +19,9 @@ public class ComissaoService {
 	@Autowired
 	private ComissaoRepository comissaoRepository;
 	GrandeComissao grandeComissao = new GrandeComissao();
-	Comissao comissao = new Comissao();
+	ComissaoNomeacao comissao = new ComissaoNomeacao();
 
-	public Comissao salvar(Long codigo, GrandeComissao grandeComissa) {
+	public ComissaoNomeacao salvar(Long codigo, GrandeComissao grandeComissa) {
 		GrandeComissao grandeComissaomembroSalva = this.grandeComissaoRepository.findById(codigo)
 				.orElseThrow(() -> new EmptyResultDataAccessException(1));
 		

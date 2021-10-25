@@ -1,5 +1,7 @@
 package com.nomeacao.model;
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,8 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "lance_votar_nomero_membro")
-public class LanceVotarNumeroMembros {
+@Table(name = "comissao_nomeacao")
+public class ComissaoNomeacao {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,17 +18,7 @@ public class LanceVotarNumeroMembros {
 
 	private String nome;
 
-	private Integer valor_voto;
-
-	public LanceVotarNumeroMembros() {
-	}
-
-	public LanceVotarNumeroMembros(Long codigo, String nome, Integer valor_voto) {
-		super();
-		this.codigo = codigo;
-		this.nome = nome;
-		this.valor_voto = valor_voto;
-	}
+	private Integer voto;
 
 	public Long getCodigo() {
 		return codigo;
@@ -44,26 +36,29 @@ public class LanceVotarNumeroMembros {
 		this.nome = nome;
 	}
 
-	public Integer getValor_voto() {
-		return valor_voto;
+	public Integer getVoto() {
+		return voto;
 	}
 
-	public void setValor_voto(Integer valor_voto) {
-		this.valor_voto = valor_voto;
+	public void setVoto(Integer voto) {
+		this.voto = voto;
 	}
 
 	@Override
 	public int hashCode() {
-		return nome.hashCode();
+		return Objects.hash(codigo);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof LanceVotarNumeroMembros))
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-
-		LanceVotarNumeroMembros lvnm = (LanceVotarNumeroMembros) obj;
-		return lvnm.nome.equals(nome);
+		if (getClass() != obj.getClass())
+			return false;
+		ComissaoNomeacao other = (ComissaoNomeacao) obj;
+		return Objects.equals(codigo, other.codigo);
 	}
 
 }

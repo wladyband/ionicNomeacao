@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nomeacao.model.NumeroVotosMembro;
 import com.nomeacao.repository.NumeroVotosMembroRepository;
 
 @RestController
@@ -18,7 +17,7 @@ public class NumeroVotosMembroResource {
 	private NumeroVotosMembroRepository numeroVotosMembroRepository;
 	
 	@GetMapping
-	public List<NumeroVotosMembro> listar() {
+	public List<String> listar() {
 		return numeroVotosMembroRepository.ListarNumeros();
 	}
 	
